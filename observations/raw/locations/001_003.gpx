@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<gpx version="1.1" creator="OsmAnd~ 4.5.8" xmlns="http://www.topografix.com/GPX/1/1" xmlns:osmand="https://osmand.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>favorites-Полевые выезды C — cut, S — sample</name>
+    <time>2024-06-01T20:28:10Z</time>
+  </metadata>
+  <wpt lat="47.9283283" lon="38.8885767">
+    <ele>178</ele>
+    <time>2024-05-14T10:08:26Z</time>
+    <name>C_001_01</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>С-051730</osmand:address>
+      <osmand:icon>tourism_viewpoint</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="47.927755" lon="38.88814">
+    <time>2024-05-14T10:38:16Z</time>
+    <name>C_001_02</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи С-051730</osmand:address>
+      <osmand:icon>tourism_viewpoint</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="47.92703" lon="38.88689">
+    <ele>178</ele>
+    <time>2024-05-14T11:05:19Z</time>
+    <name>C_001_03</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи С-051730</osmand:address>
+      <osmand:icon>tourism_viewpoint</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.0226867" lon="38.1077817">
+    <ele>191.2</ele>
+    <time>2024-05-22T07:09:17Z</time>
+    <name>C_002_01</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи Пушкіна вулиця, Пролетарське</osmand:address>
+      <osmand:icon>tourism_viewpoint</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.0239133" lon="38.1056417">
+    <ele>194.5</ele>
+    <time>2024-05-22T07:32:45Z</time>
+    <name>C_002_02</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи Пушкіна вулиця, Пролетарське</osmand:address>
+      <osmand:icon>tourism_viewpoint</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.025925" lon="38.1055483">
+    <ele>200.8</ele>
+    <time>2024-05-22T07:56:49Z</time>
+    <name>C_002_03</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи Н-21</osmand:address>
+      <osmand:icon>tourism_viewpoint</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.0141517" lon="38.111325">
+    <ele>176.2</ele>
+    <time>2024-05-22T08:34:59Z</time>
+    <name>C_003_01</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи Ломоносова вулиця, Пролетарське</osmand:address>
+      <osmand:icon>tourism_viewpoint</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.0136367" lon="38.11148">
+    <ele>177</ele>
+    <time>2024-05-22T08:52:05Z</time>
+    <name>C_003_02</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи Ломоносова вулиця, Пролетарське</osmand:address>
+      <osmand:icon>tourism_viewpoint</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.01278" lon="38.1125833">
+    <time>2024-05-22T09:17:13Z</time>
+    <name>C_003_03</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Адрес не определён</osmand:address>
+      <osmand:icon>tourism_viewpoint</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="47.9284975" lon="38.8883856">
+    <ele>178</ele>
+    <time>2024-05-14T09:53:44Z</time>
+    <name>S_001_01</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>С-051730</osmand:address>
+      <osmand:icon>nature_reserve</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="47.9277404" lon="38.8882159">
+    <ele>178</ele>
+    <time>2024-05-14T10:17:21Z</time>
+    <name>S_001_02</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи С-051730</osmand:address>
+      <osmand:icon>nature_reserve</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="47.9270417" lon="38.8868933">
+    <time>2024-05-14T11:05:57Z</time>
+    <name>S_001_03</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи С-051730</osmand:address>
+      <osmand:icon>nature_reserve</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.0225733" lon="38.1078217">
+    <time>2024-05-22T07:11:05Z</time>
+    <name>S_002_01</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи Пушкіна вулиця, Пролетарське</osmand:address>
+      <osmand:icon>nature_reserve</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.0239233" lon="38.1056117">
+    <time>2024-05-22T07:33:24Z</time>
+    <name>S_002_02</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи Пушкіна вулиця, Пролетарське</osmand:address>
+      <osmand:icon>nature_reserve</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.02585" lon="38.1055917">
+    <time>2024-05-22T07:57:28Z</time>
+    <name>S_002_03</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи Н-21</osmand:address>
+      <osmand:icon>nature_reserve</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.0141317" lon="38.1113267">
+    <ele>176.2</ele>
+    <time>2024-05-22T08:35:59Z</time>
+    <name>S_003_01</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи Ломоносова вулиця, Пролетарське</osmand:address>
+      <osmand:icon>nature_reserve</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.0136467" lon="38.1114517">
+    <time>2024-05-22T08:52:25Z</time>
+    <name>S_003_02</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Вблизи Ломоносова вулиця, Пролетарське</osmand:address>
+      <osmand:icon>nature_reserve</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="48.01283" lon="38.1125767">
+    <ele>177</ele>
+    <time>2024-05-22T09:16:03Z</time>
+    <name>S_003_03</name>
+    <type>Полевые выезды C — cut, S — sample</type>
+    <extensions>
+      <osmand:address>Адрес не определён</osmand:address>
+      <osmand:icon>nature_reserve</osmand:icon>
+      <osmand:background>circle</osmand:background>
+      <osmand:color>#00842b</osmand:color>
+    </extensions>
+  </wpt>
+  <extensions>
+    <osmand:points_groups>
+      <group name="Полевые выезды C — cut, S — sample" color="#00842b" icon="nature_reserve" background="circle" />
+    </osmand:points_groups>
+  </extensions>
+</gpx>
