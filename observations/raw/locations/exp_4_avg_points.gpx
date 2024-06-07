@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="GDAL 3.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata><bounds minlat="48.021468299959970" minlon="38.415768069328259" maxlat="48.034365818630299" maxlon="38.422175382301411"/></metadata>                  
+<wpt lat="48.03420365975321" lon="38.417209969085903">
+  <time>2024-06-05T07:23:32Z</time>
+  <name>S_006_01</name>
+</wpt>
+<wpt lat="48.034201187815164" lon="38.417149343125068">
+  <time>2024-06-05T07:28:11Z</time>
+  <name>C_006_01</name>
+</wpt>
+<wpt lat="48.034165097506111" lon="38.416595576726678">
+  <time>2024-06-05T07:45:26Z</time>
+  <name>S_006_02</name>
+</wpt>
+<wpt lat="48.03415619852192" lon="38.416538647470766">
+  <time>2024-06-05T07:49:52Z</time>
+  <name>C_006_02</name>
+</wpt>
+<wpt lat="48.034365818630299" lon="38.415833131335013">
+  <time>2024-06-05T08:05:56Z</time>
+  <name>S_006_03</name>
+</wpt>
+<wpt lat="48.034351975819256" lon="38.415768069328259">
+  <time>2024-06-05T08:09:15Z</time>
+  <name>C_006_03</name>
+</wpt>
+<wpt lat="48.023101813975188" lon="38.417034387974098">
+  <time>2024-06-05T08:42:54Z</time>
+  <name>S_007_01</name>
+</wpt>
+<wpt lat="48.023142554729937" lon="38.417133247440752">
+  <time>2024-06-05T08:46:50Z</time>
+  <name>C_007_01</name>
+</wpt>
+<wpt lat="48.022059169035963" lon="38.419938189656776">
+  <time>2024-06-05T09:19:46Z</time>
+  <name>S_007_02</name>
+</wpt>
+<wpt lat="48.022061339069808" lon="38.420051339930581">
+  <time>2024-06-05T09:21:42Z</time>
+  <name>C_007_02</name>
+</wpt>
+<wpt lat="48.02155049209393" lon="38.422131604356046">
+  <time>2024-06-05T09:56:05Z</time>
+  <name>C_007_03</name>
+</wpt>
+<wpt lat="48.02146829995997" lon="38.422175382301411">
+  <time>2024-06-05T09:58:41Z</time>
+  <name>S_007_03</name>
+</wpt>
+</gpx>
