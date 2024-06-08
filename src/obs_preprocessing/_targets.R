@@ -9,7 +9,7 @@ library(targets)
 
 # Set target options:
 tar_option_set(
-  packages = c("tidyverse", "sf", "stringr", "rgbif", "stringdist"),
+  packages = c("tidyverse", "sf", "stringr", "rgbif", "stringdist", "proxy", "igraph"),
 )
 
 # Run the R scripts in the R/ folder with your custom functions:
@@ -78,5 +78,22 @@ list(
     name = spec_d_acc_full,
     command = species_join_tab(spec_d_acc_clean),
     format = "qs"
+  ),
+  # Compute cooccurrences matrix
+  tar_target(
+    name = cooccur_matrix_verb,
+    command = cooccur_matrix(spec_d_verb_full),
+    format = "qs"
+  ),
+  tar_target(
+    name = cooccur_matrix_acc,
+    command = cooccur_matrix(spec_d_acc_full),
+    format = "qs"
+  ),
+  # Preapre graph visualization
+  tar_target(
+    name = graph_html_verb,
+    command = gen_graph_html(path_deps, spec_d_verb_full, cooccur_matrix_verb),
+    format = "file"
   )
 )

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+<!-- Load d3.js -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+<!-- Other script blocks can access graph_data after it's loaded -->
+</head>
+
+<body>
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<script src="force_graph.js"></script>
+<script>
+    
+</script>
+
+<script>
+    // Declare a global constant
+    let graph_data;
+
+    // Function to load and parse the JSON file
+    async function loadJSON() {
+        fetch('graph_json.json')
+            .then(response => response.json())
+            .then(data => {
+                graph_data = data;
+                console.log('JSON loaded', graph_data);
+                // Here you can call other functions that might depend on graph_data
+                createGraph(graph_data);
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+    }
+
+    // Call the function to load the JSON when the script runs
+    loadJSON();
+
+    function createGraph(graph_data) {
+        const container = d3.select('#my_dataviz');
+
+        console.log(graph_data)
+        chart = ForceGraph(graph_data, {
+            nodeId: d => d.id,
+            nodeGroup: d => d.group,
+            nodeTitle: d => `${d.id}\n${d.group}`,
+            linkStrokeWidth: l => Math.sqrt(l.value),
+            nodeStrength: -200,
+            height: 800,
+            width: 800
+        })
+        console.log(chart)
+
+        container.node().appendChild(chart);
+    }
+</script>
+
+</body>
+
+
+

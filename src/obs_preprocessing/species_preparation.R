@@ -1,6 +1,9 @@
 require(tidyverse)
 require(rgbif)
 require(stringdist)
+require(proxy)
+require(igraph)
+require(rjson)
 
 ##################
 #    For test    #
@@ -152,4 +155,68 @@ species_join_tab <- function(spec_d_gbif) {
         mutate_all(~replace(., is.na(.), 0))
 
     return(res)
+}
+
+cooccur_matrix <- function(spec_d_gbif) {
+    # Retain only species names
+    spec_mat <- spec_d_gbif |>
+        dplyr::select(-c(1:11)) |>
+        as.matrix()
+    # Assign row names as simplified sci_name (first two words)
+    rownames(spec_mat) <- sapply(spec_d_gbif$sci_name, function(x) {
+        return(paste(strsplit(x, " ")[[1]][1:2], collapse = " "))
+    })
+    # Calculate cooccurence matrix
+    spec_cooccur <- proxy::dist(spec_mat, method = function(x, y) {
+        x <- x > 0
+        y <- y > 0
+        return(sum(x & y))
+    })
+
+    # Return
+    return(spec_cooccur)
+}
+
+gen_graph_html <- function(path_deps, spec_d_gbif, spec_cooccur) {
+    # Generate JSON for html demonstration
+    spec_cooccur_mat <- as.matrix(spec_cooccur)
+    graph <- graph.empty(n = nrow(spec_cooccur_mat))
+    
+    # Iterate over the matrix and add edges to the graph
+    for (i in 1:nrow(spec_cooccur_mat)) {
+        for (j in i:ncol(spec_cooccur_mat)) {
+            if (spec_cooccur_mat[i, j] != 0) {
+                graph <- add_edges(graph, c(i, j), attr = list(weight = spec_cooccur_mat[i, j]))
+            }
+        }
+    }
+
+    spec_names <- sapply(spec_d_gbif$sci_name, function(x) {
+        return(paste(strsplit(x, " ")[[1]][1:2], collapse = " "))
+    })
+
+    V(graph)$name <- spec_names
+    V(graph)$strength <- strength(graph)
+
+    order_group <- spec_d_gbif$order |>
+        as.factor()
+
+    # Generate nodes
+    nodes <- apply(bind_cols(spec_names, order_group, V(graph)$strength), 1, function(x) {
+        list(id = as.character(x[1]), group = as.character(x[2]), str = as.numeric(x[3]))
+    })
+
+    # Generate edges
+    edge_list <- as_edgelist(graph, names = TRUE) |>
+        cbind(E(graph)$weight) |>
+        apply(1, function(x) {
+            list(source = as.character(x[1]), target = as.character(x[2]), value = as.numeric(x[3]))
+        })
+    
+    graph_list <- list(nodes = nodes, links = edge_list)
+    # Convert to json
+    graph_json <- rjson::toJSON(graph_list)
+    # Write to output json file
+    f_name <- paste0(path_deps, "output/html/graph_json.json")
+    write(graph_json, f_name)
 }
