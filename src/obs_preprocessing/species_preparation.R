@@ -217,6 +217,6 @@ gen_graph_html <- function(path_deps, spec_d_gbif, spec_cooccur) {
     # Convert to json
     graph_json <- rjson::toJSON(graph_list)
     # Write to output json file
-    f_name <- paste0(path_deps, "docs/html/graph_json.json")
+    f_name <- paste0(path_deps, "output/html/graph_json.json")
     write(graph_json, f_name)
 }
