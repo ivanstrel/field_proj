@@ -21,13 +21,32 @@ require(Polychrome)
 require(rlang)
 require(network)
 require(DT)
+require(leaflet)
+require(RColorBrewer)
 
 # Load data
 tar_load(graph_verb)
 tar_load(spec_d_verb_full)
+tar_load(locations)
+tar_load(biomass)
 ```
 
 ## Карта расположения участков сбора
+```{r, echo=FALSE}
+colors <- RColorBrewer::brewer.pal(3, "Set1")
+
+locations %>%
+  leaflet( width = "100%") %>%
+  addTiles() %>%
+  addCircleMarkers(
+    clusterOptions = NULL, #markerClusterOptions(),
+    opacity = 1,
+    fillOpacity = 0.8,
+    radius = 5,
+    weight = 5,
+    color = colors[as.numeric(as.factor(locations$plot_type))],
+    popup = locations$name)
+```
 
 ## Граф взаимосвязей между видами
 
@@ -74,6 +93,15 @@ heatmap(heat_mat, scale = "none",
 ```{r, echo=FALSE, out.width="100%"}
 datatable(spec_d_verb_full, fillContainer = TRUE,
           options = list(
-            pageLength = 50
+            pageLength = 25
+          ))
+```
+
+## Данные по биомассе участков
+```{r, echo = FALSE, out.width="100%"}
+
+datatable(biomass, fillContainer = TRUE,
+          options = list(
+            pageLength = 25
           ))
 ```

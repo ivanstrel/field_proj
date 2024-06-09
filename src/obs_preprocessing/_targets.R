@@ -11,7 +11,7 @@ library(targets)
 tar_option_set(
   packages = c("tidyverse", "sf", "stringr", "rgbif", "stringdist", "network", 
                "proxy", "igraph", "GGally", "rjson", "Polychrome", "rlang",
-               "DT", "plotly"),
+               "DT", "plotly", "sf", "leaflet", "RColorBrewer"),
 )
 
 # Run the R scripts in the R/ folder with your custom functions:
@@ -27,18 +27,21 @@ list(
     name = path_deps,
     command = get_path_deps(),
     format = "qs",
-    cue = tar_cue(mode = "always")
+    cue = tar_cue(mode = "always"),
+    priority = 1
   ),
   tar_target(
     name = species_files,
     command = get_species_files(path_deps),
     format = "qs",
-    cue = tar_cue(mode = "always")
+    cue = tar_cue(mode = "always"),
+    priority = 1
   ),
   tar_target(
     name = species_data,
     command = get_spec_data(species_files),
-    format = "qs"
+    format = "qs",
+    priority = 1
   ),
   tar_target(
     name = spec_plot_names,
@@ -101,7 +104,41 @@ list(
     format = "qs"
   ),
   # .....
-  # Prepare report
+  # =========================================================================== #
+  # Coordinates processing                                                   ####
+  # =========================================================================== #
+  tar_target(
+    name = bbox,
+    command = get_bbox(path_deps),
+    format = "qs",
+    cue = tar_cue(mode = "always")
+  ),
+  tar_target(
+    name = locations,
+    command = process_coords(path_deps),
+    format = "qs",
+    cue = tar_cue(mode = "always"),
+    priority = 1
+  ),
+  tar_target(
+    name = locations_checks,
+    command = check_coords_data(locations, bbox),
+    format = "qs",
+    cue = tar_cue(mode = "always")
+  ),
+  # =========================================================================== #
+  # Process biomass                                                          ####
+  # =========================================================================== #
+  tar_target(
+    name = biomass,
+    command = process_biomass(path_deps, locations),
+    format = "qs",
+    cue = tar_cue(mode = "always"),
+    priority = 1
+  ),
+  # =========================================================================== #
+  # Prepare report                                                           ####
+  # =========================================================================== #
   tar_target(
     name = observations_report,
     command = knit_report(path_deps),

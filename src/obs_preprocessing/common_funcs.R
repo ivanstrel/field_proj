@@ -72,6 +72,82 @@ get_plot_names <- function(species_files, species_data) {
     return(all_names)
 }
 
+# =========================================================================== #
+# Functions for coordinates processing                                     ####
+# =========================================================================== #
+get_bbox <- function(path_deps) {
+    bbox_path <- paste0(path_deps, "data/bbox/Selected_S2_tiles.geojson")
+    bbox <- read_sf(bbox_path) |>
+        st_bbox() |>
+        st_as_sfc()
+    return(bbox)
+}
+
+process_coords <- function(path_deps) {
+    gpx_folder <- paste0(path_deps, "observations/raw/locations")
+
+    # Get all GPX filenames
+    gpx_files <- list.files(
+        path = gpx_folder,
+        pattern = "*.gpx",
+        full.names = TRUE
+    )
+
+    # read GPX files
+    locations <- lapply(
+        gpx_files,
+        function(x) {
+            gpx <- read_sf(x) |>
+                dplyr::select(c(name, time, ele, geometry)) |>
+                mutate(patch_id = as.numeric(str_split(name, "_", simplify = TRUE)[, 2])) |>
+                mutate(plot_id = as.numeric(str_split(name, "_", simplify = TRUE)[, 3])) |>
+                mutate(plot_type = str_split(name, "_", simplify = TRUE)[, 1])
+            return(gpx)
+        }
+    ) |>
+        # merge list into single sf
+        reduce(rbind)
+
+    # Save to geojson
+    out_path <- paste0(path_deps, "processed_obs_data/locations/locations.geojson")
+    st_write(locations, out_path, delete_dsn = TRUE)
+}
+
+# =========================================================================== #
+# Process biomass data files                                               ####
+# =========================================================================== #
+
+process_biomass <- function(path_deps, locations) {
+    bm_file <- paste0(path_deps, "observations/raw/biomass/biomass_obs.csv")
+    
+    biomass <- read_csv(bm_file) |>
+        mutate(plot_id = as.numeric(str_split(plot, "_", simplify = TRUE)[, 3])) |>
+        mutate(plot_type = str_split(plot, "_", simplify = TRUE)[, 1]) |>
+        mutate(patch_id = str_split(plot, "_", simplify = TRUE)[, 2] |> as.numeric())    
+    # Check that all plots names are in locations
+    if (!all(biomass$plot %in% locations$name)) {
+        err_plots <- biomass$plot[!biomass$plot %in% locations$name]
+        stop(
+            sprintf(
+                "There are plots in the biomass data that are not in the locations data:\n%s",
+                paste(err_plots, collapse = ",\n")
+            )
+        )
+    }
+
+    # Calculate biomass
+    biomass <- biomass |>
+        mutate(bimass = full - package)
+    # Add date from locationa
+    st_geometry(locations) <- NULL
+    biomass <- biomass |>
+        left_join(locations |> dplyr::select(name, time), by = c("plot" = "name"))
+    
+    # Save to file
+    out_path <- paste0(path_deps, "processed_obs_data/biomass/biomass.csv")
+    write_csv(biomass, out_path)
+    return(biomass)
+}
 
 # =========================================================================== #
 # Knit the ongoing report                                                  ####
