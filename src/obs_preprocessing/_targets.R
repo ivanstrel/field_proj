@@ -9,7 +9,9 @@ library(targets)
 
 # Set target options:
 tar_option_set(
-  packages = c("tidyverse", "sf", "stringr", "rgbif", "stringdist", "proxy", "igraph"),
+  packages = c("tidyverse", "sf", "stringr", "rgbif", "stringdist", "network", 
+               "proxy", "igraph", "GGally", "rjson", "Polychrome", "rlang",
+               "DT", "plotly"),
 )
 
 # Run the R scripts in the R/ folder with your custom functions:
@@ -24,12 +26,14 @@ list(
   tar_target(
     name = path_deps,
     command = get_path_deps(),
-    format = "qs"
+    format = "qs",
+    cue = tar_cue(mode = "always")
   ),
   tar_target(
     name = species_files,
     command = get_species_files(path_deps),
-    format = "file"
+    format = "qs",
+    cue = tar_cue(mode = "always")
   ),
   tar_target(
     name = species_data,
@@ -90,10 +94,18 @@ list(
     command = cooccur_matrix(spec_d_acc_full),
     format = "qs"
   ),
-  # Preapre graph visualization
+  # Preapre graph
   tar_target(
-    name = graph_html_verb,
-    command = gen_graph_html(path_deps, spec_d_verb_full, cooccur_matrix_verb),
-    format = "file"
+    name = graph_verb,
+    command = gen_graph(path_deps, spec_d_verb_full, cooccur_matrix_verb),
+    format = "qs"
+  ),
+  # .....
+  # Prepare report
+  tar_target(
+    name = observations_report,
+    command = knit_report(path_deps),
+    format = "file",
+    cue = tar_cue(mode = "always")
   )
 )

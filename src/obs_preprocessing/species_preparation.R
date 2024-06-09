@@ -177,7 +177,7 @@ cooccur_matrix <- function(spec_d_gbif) {
     return(spec_cooccur)
 }
 
-gen_graph_html <- function(path_deps, spec_d_gbif, spec_cooccur) {
+gen_graph <- function(path_deps, spec_d_gbif, spec_cooccur) {
     # Generate JSON for html demonstration
     spec_cooccur_mat <- as.matrix(spec_cooccur)
     graph <- graph.empty(n = nrow(spec_cooccur_mat))
@@ -197,26 +197,29 @@ gen_graph_html <- function(path_deps, spec_d_gbif, spec_cooccur) {
 
     V(graph)$name <- spec_names
     V(graph)$strength <- strength(graph)
+    V(graph)$order <- spec_d_gbif$order
 
-    order_group <- spec_d_gbif$order |>
-        as.factor()
+    return(graph)
 
-    # Generate nodes
-    nodes <- apply(bind_cols(spec_names, order_group, V(graph)$strength), 1, function(x) {
-        list(id = as.character(x[1]), group = as.character(x[2]), str = as.numeric(x[3]))
-    })
+    # order_group <- spec_d_gbif$order |>
+    #     as.factor()
 
-    # Generate edges
-    edge_list <- as_edgelist(graph, names = TRUE) |>
-        cbind(E(graph)$weight) |>
-        apply(1, function(x) {
-            list(source = as.character(x[1]), target = as.character(x[2]), value = as.numeric(x[3]))
-        })
+    # # Generate nodes
+    # nodes <- apply(bind_cols(spec_names, order_group, V(graph)$strength), 1, function(x) {
+    #     list(id = as.character(x[1]), group = as.character(x[2]), str = as.numeric(x[3]))
+    # })
+
+    # # Generate edges
+    # edge_list <- as_edgelist(graph, names = TRUE) |>
+    #     cbind(E(graph)$weight) |>
+    #     apply(1, function(x) {
+    #         list(source = as.character(x[1]), target = as.character(x[2]), value = as.numeric(x[3]))
+    #     })
     
-    graph_list <- list(nodes = nodes, links = edge_list)
-    # Convert to json
-    graph_json <- rjson::toJSON(graph_list)
-    # Write to output json file
-    f_name <- paste0(path_deps, "output/html/graph_json.json")
-    write(graph_json, f_name)
+    # graph_list <- list(nodes = nodes, links = edge_list)
+    # # Convert to json
+    # graph_json <- rjson::toJSON(graph_list)
+    # # Write to output json file
+    # f_name <- paste0(path_deps, "output/html/graph_json.json")
+    # write(graph_json, f_name)
 }

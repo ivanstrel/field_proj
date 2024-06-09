@@ -73,3 +73,10 @@ get_plot_names <- function(species_files, species_data) {
 }
 
 
+# =========================================================================== #
+# Knit the ongoing report                                                  ####
+# =========================================================================== #
+knit_report <- function(path_deps) {
+    out_file = paste0(path_deps, "output/reports/observations_report.html")
+    rmarkdown::render("report.Rmd", output_file = out_file)
+}

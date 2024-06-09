@@ -1,0 +1,79 @@
+---
+title: Текущий отчет, иллюстрации состояния данных
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+<style type="text/css">
+  .dataTables_scroll {height: auto}
+  .dataTables_scrollBody {height: auto !important}
+  .dataTables_wrapper {height: auto;}
+</style>
+
+```{r, echo=FALSE, include=FALSE}
+require(tidyverse)
+require(igraph)
+require(plotly)
+require(targets)
+require(GGally)
+require(Polychrome)
+require(rlang)
+require(network)
+require(DT)
+
+# Load data
+tar_load(graph_verb)
+tar_load(spec_d_verb_full)
+```
+
+## Карта расположения участков сбора
+
+## Граф взаимосвязей между видами
+
+Точки -- виды (можно навсети на них курсор, появится подпись с названием). Разные цвета отображают разные порядки. Линии -- показатель связи. Если два вида встречались на одном участке (делянке 3х3 м), то на графе они будут связаны линией. Толщина линии пропорционально количеству связей, чем толще (темнее) линия, тем чаще эти виды встречались вместе. Общая конфигурация отображает взаимную встречаемость. Виды встречающиеся чаще вместе, расопложены ближе на графе. 
+
+
+```{r, echo=FALSE, out.width="100%"}
+adj <- igraph::as_adjacency_matrix(graph_verb)
+net <- network(adj)
+net %v% "order" <- as.character(V(graph_verb)$order)
+net %e% "weight" <- as.numeric(E(graph_verb)$weight)
+net %e% "width" <- as.numeric(E(graph_verb)$weight) / max(E(graph_verb)$weight) * 2
+net %v% "size" <- V(graph_verb)$strength / max(V(graph_verb)$strength) * 3
+
+pal <- Polychrome::green.armytage.colors(24)[1:(length(unique(V(graph_verb)$order)))]
+names(pal) <- unique(V(graph_verb)$order)
+g <- ggnet2(net, color = "order", palette = pal, alpha = 0.75, size = 3,
+            edge.alpha = 0.5, edge.size = "width",
+            color.legend = "order")
+g <- g + aes(text = "text")
+g$mapping$text <- quo_set_expr(g$mapping$y, quote(label))
+ggplotly(g, tooltip = c("text", "color"))
+```
+
+## Тепловая карта взаимной встречаемости видов
+
+Пока с подписями видов не понятно, слишком много, отображается, только каждый третий.
+
+```{r, echo=FALSE, out.width="100%"}
+heat_mat <- as.matrix(spec_d_verb_full[, -c(1:11)])
+heat_mat[heat_mat > 0] <- 1
+short_names <- sapply(spec_d_verb_full$sci_name, function(x) {
+        return(paste(strsplit(x, " ")[[1]][1:2], collapse = " "))
+    })
+rownames(heat_mat) <- short_names
+heatmap(heat_mat, scale = "none",
+        distfun = function(x) {
+          dist(x > 0, method = "binary")
+        }
+)
+```
+
+## Суммарная таблица частного проективного покрытия видов
+```{r, echo=FALSE, out.width="100%"}
+datatable(spec_d_verb_full, fillContainer = TRUE,
+          options = list(
+            pageLength = 50
+          ))
+```
