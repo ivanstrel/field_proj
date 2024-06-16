@@ -143,6 +143,7 @@ list(
     name = observations_report,
     command = knit_report(path_deps),
     format = "file",
-    cue = tar_cue(mode = "always")
+    cue = tar_cue(mode = "always"),
+    priority = 0
   )
 )

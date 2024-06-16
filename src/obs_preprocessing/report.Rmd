@@ -9,6 +9,9 @@ output:
   .dataTables_scroll {height: auto}
   .dataTables_scrollBody {height: auto !important}
   .dataTables_wrapper {height: auto;}
+
+  /* Set main container size to 1280 */
+  .main-container {max-width: 1280px}
 </style>
 
 ```{r, echo=FALSE, include=FALSE}
@@ -53,7 +56,7 @@ locations %>%
 Точки -- виды (можно навсети на них курсор, появится подпись с названием). Разные цвета отображают разные порядки. Линии -- показатель связи. Если два вида встречались на одном участке (делянке 3х3 м), то на графе они будут связаны линией. Толщина линии пропорционально количеству связей, чем толще (темнее) линия, тем чаще эти виды встречались вместе. Общая конфигурация отображает взаимную встречаемость. Виды встречающиеся чаще вместе, расопложены ближе на графе. 
 
 
-```{r, echo=FALSE, out.width="100%"}
+```{r, echo=FALSE, out.width="100%", out.height="640px"}
 adj <- igraph::as_adjacency_matrix(graph_verb)
 net <- network(adj)
 net %v% "order" <- as.character(V(graph_verb)$order)
