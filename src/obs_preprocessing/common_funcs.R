@@ -31,8 +31,38 @@ get_species_files <- function(path_depth) {
     return(species_files)
 }
 
+# Replace names with common mistakes
+fix_names <- function(path_depth, species_files) {
+    # Read file with common substitutions
+    f_name <- paste0(path_depth, "observations/preprocessed/common_subs.csv")
+    subs <- read_csv(f_name)
+    # Find source string in species_files and replace with target string
+    apply(subs, 1, function(x) {
+        source <- x[1]
+        target <- x[2]
+        # Read file as text
+        lapply(species_files, function(y) {
+            dat <- read_file(y)
+            # Check if source string is in the file
+            if (str_detect(dat, source)) {
+                message <- sprintf(
+                    "\nThe string %s in the file:\n%s\nwas replaced with %s",
+                    source, y, target
+                )
+                cat(message)
+                # Replace
+                dat <- gsub(source, target, dat)
+                # Write
+                write_file(dat, y)
+            }
+            
+        })
+    })
+    return(TRUE)
+}
+
 # read all species data files
-get_spec_data <- function(species_files) {
+get_spec_data <- function(species_files, fix_typos) {
     species <- lapply(
     species_files,
     function(x) {

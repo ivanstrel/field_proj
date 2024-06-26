@@ -22,9 +22,23 @@ check_sci_names <- function(species_data) {
             dplyr::select(c(scientificName, class, order, family, genus, species, synonym, verbatim_name, rank)) |>
             # remove genus form species
             mutate(species = str_remove(species, paste0("^", genus, " ")))
-
+        
+        # If there were missed species in GBIF, scientificName == NA,
+        # raise an error, print which species was not found and in what file
+        if (any(is.na(gbif_info$scientificName))) {
+            not_found <- gbif_info |>
+                filter(is.na(scientificName)) |>
+                pull(verbatim_name)
+            stop(
+                sprintf(
+                    "The following species were not found in GBIF:\n%s\nin the following files:\n%s",
+                    not_found,
+                    y
+                )
+            )
+        }
         # If there was not a match for species, i.e. rank column contains non SPECIES values
-        # rise an error, print which species was not found and in what file
+        # raise an error, print which species was not found and in what file
         if (any(gbif_info$rank != "SPECIES")) {
             not_found <- gbif_info |>
                 filter(rank != "SPECIES") |>

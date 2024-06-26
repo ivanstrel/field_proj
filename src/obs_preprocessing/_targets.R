@@ -38,9 +38,17 @@ list(
     priority = 1
   ),
   tar_target(
-    name = species_data,
-    command = get_spec_data(species_files),
+    name = fix_typos,
+    command = fix_names(path_deps, species_files),
     format = "qs",
+    cue = tar_cue(mode = "always"),
+    priority = 1
+  ),
+  tar_target(
+    name = species_data,
+    command = get_spec_data(species_files, fix_typos),
+    format = "qs",
+    cue = tar_cue(mode = "always"),
     priority = 1
   ),
   tar_target(
