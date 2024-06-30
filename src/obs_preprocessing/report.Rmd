@@ -26,6 +26,7 @@ require(network)
 require(DT)
 require(leaflet)
 require(RColorBrewer)
+require(heatmaply)
 
 # Load data
 tar_load(graph_verb)
@@ -76,19 +77,20 @@ ggplotly(g, tooltip = c("text", "color"))
 
 ## Тепловая карта взаимной встречаемости видов
 
-Пока с подписями видов не понятно, слишком много, отображается, только каждый третий.
 
-```{r, echo=FALSE, out.width="100%"}
+```{r, echo=FALSE, out.width="100%", out.height="940px"}
 heat_mat <- as.matrix(spec_d_verb_full[, -c(1:11)])
 heat_mat[heat_mat > 0] <- 1
 short_names <- sapply(spec_d_verb_full$sci_name, function(x) {
         return(paste(strsplit(x, " ")[[1]][1:2], collapse = " "))
     })
 rownames(heat_mat) <- short_names
-heatmap(heat_mat, scale = "none",
-        distfun = function(x) {
-          dist(x > 0, method = "binary")
-        }
+
+heatmaply(heat_mat,
+    scale = "none",
+    distfun = function(x) {
+        dist(x > 0, method = "binary")
+    }
 )
 ```
 

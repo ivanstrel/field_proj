@@ -14,7 +14,7 @@ require(rjson)
 # species_data[[5]] <- rbind(species_data[[5]], foo)
 
 
-check_sci_names <- function(species_data) {
+check_sci_names <- function(species_data, checks) {
     # In each species data table, check check names against GBIF
     # get accepted names, than join them by full join
     spec_d_gbif <- mapply(function(x, y) {

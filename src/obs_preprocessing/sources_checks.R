@@ -29,7 +29,7 @@ check_species_plot_names <- function(spec_plot_names) {
 # ........................................................................... #
 # Check that there are no duplicated plot ids                              ####
 # ........................................................................... #
-check_plots_duplicates <- function(spec_plot_names) {
+check_plots_duplicates <- function(spec_plot_names, prev_checks) {
     # Get duplicates
     duplicates <- spec_plot_names[duplicated(spec_plot_names)]
     # Get file names, that contain duplicates

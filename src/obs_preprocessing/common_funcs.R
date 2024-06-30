@@ -1,6 +1,7 @@
 require(tidyverse)
 require(sf)
 require(stringr)
+require(stringi)
 
 # =========================================================================== #
 # Here will be all the common functions for species preparation            ####
@@ -44,14 +45,14 @@ fix_names <- function(path_depth, species_files) {
         lapply(species_files, function(y) {
             dat <- read_file(y)
             # Check if source string is in the file
-            if (str_detect(dat, source)) {
+            if (stri_detect(dat, fixed=source)) {
                 message <- sprintf(
                     "\nThe string %s in the file:\n%s\nwas replaced with %s",
                     source, y, target
                 )
                 cat(message)
                 # Replace
-                dat <- gsub(source, target, dat)
+                dat <- gsub(source, target, dat, fixe = TRUE)
                 # Write
                 write_file(dat, y)
             }
@@ -147,7 +148,7 @@ process_coords <- function(path_deps) {
 # Process biomass data files                                               ####
 # =========================================================================== #
 
-process_biomass <- function(path_deps, locations) {
+process_biomass <- function(path_deps, locations, checks) {
     bm_file <- paste0(path_deps, "observations/raw/biomass/biomass_obs.csv")
     
     biomass <- read_csv(bm_file) |>
@@ -182,7 +183,7 @@ process_biomass <- function(path_deps, locations) {
 # =========================================================================== #
 # Knit the ongoing report                                                  ####
 # =========================================================================== #
-knit_report <- function(path_deps) {
+knit_report <- function(path_deps, graph_verb) {
     out_file = paste0(path_deps, "output/reports/observations_report.html")
     rmarkdown::render("report.Rmd", output_file = out_file)
 }

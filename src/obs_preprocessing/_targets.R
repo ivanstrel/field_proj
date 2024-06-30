@@ -64,13 +64,13 @@ list(
   ),
   tar_target(
     name = species_data_checks_plots_duplicates,
-    command = check_plots_duplicates(spec_plot_names),
+    command = check_plots_duplicates(spec_plot_names, species_data_checks_plot_names),
     format = "qs"
   ),
   # Process scientific names
   tar_target(
     name = species_data_gbif,
-    command = check_sci_names(species_data),
+    command = check_sci_names(species_data, species_data_checks_plots_duplicates),
     format = "qs"
   ),
   tar_target(
@@ -139,7 +139,7 @@ list(
   # =========================================================================== #
   tar_target(
     name = biomass,
-    command = process_biomass(path_deps, locations),
+    command = process_biomass(path_deps, locations, locations_checks),
     format = "qs",
     cue = tar_cue(mode = "always"),
     priority = 1
@@ -149,7 +149,7 @@ list(
   # =========================================================================== #
   tar_target(
     name = observations_report,
-    command = knit_report(path_deps),
+    command = knit_report(path_deps, graph_verb),
     format = "file",
     cue = tar_cue(mode = "always"),
     priority = 0
