@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.0">
+	<name>GPS Point export</name>
+	<creator>GPS Point</creator>
+	<version>1.0</version>
+	<wpt lat="47.42243166666681" lon="38.12032500000002">
+		<ele>75.50000000000006</ele>
+		<time>2024-07-04T09:12Z</time>
+		<name>S_025_01</name>
+		<desc></desc>
+	</wpt>
+</gpx>
