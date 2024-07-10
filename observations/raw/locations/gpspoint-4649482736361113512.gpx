@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.0">
+	<name>GPS Point export</name>
+	<creator>GPS Point</creator>
+	<version>1.0</version>
+	<wpt lat="47.309843333332914" lon="38.18192333333298">
+		<ele>47.30000000000023</ele>
+		<time>2024-07-09T09:59Z</time>
+		<name>S_030_02</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.31327226427703" lon="38.178055652136955">
+		<ele>56.228236359975455</ele>
+		<time>2024-07-09T09:34Z</time>
+		<name>S_030_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.3184142025862" lon="38.16641219109194">
+		<ele>35.52801724137931</ele>
+		<time>2024-07-09T09:12Z</time>
+		<name>S_029_02</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.32309833333227" lon="38.17427999999915">
+		<ele>49.79999999999888</ele>
+		<time>2024-07-09T08:45Z</time>
+		<name>S_029_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.34437956298096" lon="38.094770113538466">
+		<ele>68.71580976863588</ele>
+		<time>2024-07-09T07:40Z</time>
+		<name>S_027_02</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.35008812500002" lon="38.09259276041666">
+		<ele>74.86250000000003</ele>
+		<time>2024-07-09T07:13Z</time>
+		<name>C_027_01</name>
+		<desc></desc>
+	</wpt>
+</gpx>
