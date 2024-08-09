@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.0">
+	<name>GPS Point export</name>
+	<creator>GPS Point</creator>
+	<version>1.0</version>
+	<wpt lat="47.85736950980396" lon="37.97405751633993">
+		<ele>119.87450980392191</ele>
+		<time>2024-08-08T09:18Z</time>
+		<name>C_035_02</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.856268333333446" lon="37.9767217757011">
+		<ele>126.39532710280417</ele>
+		<time>2024-08-08T09:41Z</time>
+		<name>C_035_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.85627771278063" lon="37.97656940649159">
+		<ele>124.31204099060366</ele>
+		<time>2024-08-08T09:39Z</time>
+		<name>S_035_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.85680533163283" lon="37.94151948129266">
+		<ele>158.7530612244905</ele>
+		<time>2024-08-08T07:49Z</time>
+		<name>C_034_02</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.857810000000256" lon="37.93882833333355">
+		<ele>157.90000000000043</ele>
+		<time>2024-08-08T08:17Z</time>
+		<name>C_034_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.85776797050148" lon="37.93890643952869">
+		<ele>158.3626548672545</ele>
+		<time>2024-08-08T08:13Z</time>
+		<name>S_034_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.856254136904795" lon="37.95681980654774">
+		<ele>138.56696428571476</ele>
+		<time>2024-08-08T06:57Z</time>
+		<name>C_033_02</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.855696714456634" lon="37.95977975507761">
+		<ele>132.17741935483977</ele>
+		<time>2024-08-08T07:14Z</time>
+		<name>C_033_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="47.85578750749321" lon="37.95981437200341">
+		<ele>131.7726618705018</ele>
+		<time>2024-08-08T07:09Z</time>
+		<name>S_033_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="48.126436907131186" lon="38.71359082089565">
+		<ele>246.79104477612032</ele>
+		<time>2024-08-01T08:29Z</time>
+		<name>C_032_04</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="48.119065518518745" lon="38.71169172839519">
+		<ele>216.18518518518607</ele>
+		<time>2024-08-01T08:00Z</time>
+		<name>C_032_03</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="48.1255079001544" lon="38.710950705128035">
+		<ele>245.60839160838364</ele>
+		<time>2024-08-01T08:29Z</time>
+		<name>S_032_02</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="48.12544166666666" lon="38.71097696969696">
+		<ele>245.4181818181818</ele>
+		<time>2024-08-01T08:14Z</time>
+		<name>C_032_02</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="48.12092238596512" lon="38.70696038596497">
+		<ele>223.3321052631591</ele>
+		<time>2024-08-01T07:32Z</time>
+		<name>S_032_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="48.12090018181818" lon="38.70703142424244">
+		<ele>221.95818181818197</ele>
+		<time>2024-08-01T07:37Z</time>
+		<name>C_032_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="48.140464602888244" lon="38.66100361612539">
+		<ele>233.224548736463</ele>
+		<time>2024-08-01T09:25Z</time>
+		<name>C_031_02</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="48.14122057851257" lon="38.65764804407729">
+		<ele>231.8479338842985</ele>
+		<time>2024-08-01T09:27Z</time>
+		<name>S_031_01</name>
+		<desc></desc>
+	</wpt>
+	<wpt lat="48.14116615384616" lon="38.65769641025641">
+		<ele>233.67692307692312</ele>
+		<time>2024-08-01T09:38Z</time>
+		<name>C_031_01</name>
+		<desc></desc>
+	</wpt>
+</gpx>
