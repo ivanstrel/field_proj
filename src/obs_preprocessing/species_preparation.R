@@ -197,6 +197,7 @@ gen_graph <- function(path_deps, spec_d_gbif, spec_cooccur) {
     graph <- graph.empty(n = nrow(spec_cooccur_mat))
     
     # Iterate over the matrix and add edges to the graph
+    # in spec_cooccur_mat, each cell represents number of cooccurrences
     for (i in 1:nrow(spec_cooccur_mat)) {
         for (j in i:ncol(spec_cooccur_mat)) {
             if (spec_cooccur_mat[i, j] != 0) {
@@ -204,6 +205,16 @@ gen_graph <- function(path_deps, spec_d_gbif, spec_cooccur) {
             }
         }
     }
+
+    # Add weights to vertices (number of occurrences)
+    spec_occ <- spec_d_gbif |>
+        # Get only columns that start with "S_"
+        dplyr::select(starts_with("S_")) |>
+        # Convert to binary (> 0)
+        dplyr::mutate_all(~replace(., . > 0, 1)) |>
+        rowSums(na.rm = TRUE)
+
+    V(graph)$occ <- spec_occ
 
     spec_names <- sapply(spec_d_gbif$sci_name, function(x) {
         return(paste(strsplit(x, " ")[[1]][1:2], collapse = " "))
@@ -214,4 +225,38 @@ gen_graph <- function(path_deps, spec_d_gbif, spec_cooccur) {
     V(graph)$order <- spec_d_gbif$order
 
     return(graph)
+}
+
+save_species_acc <- function(path_deps, spec_d_acc_full) {
+    # Check if species folder exists
+    if (!dir.exists(paste0(path_deps, "processed_obs_data/species"))) {
+        dir.create(paste0(path_deps, "processed_obs_data/species"))
+    }
+    # Save as csv
+    f_name <- paste0(path_deps, "processed_obs_data/species/species_acc.csv")
+    write_csv(spec_d_acc_full, f_name)
+    return(f_name)
+}
+
+save_species_verb <- function(path_deps, spec_d_verb_full) {
+    # Check if species folder exists
+    if (!dir.exists(paste0(path_deps, "processed_obs_data/species"))) {
+        dir.create(paste0(path_deps, "processed_obs_data/species"))
+    }
+    # Save as csv
+    f_name <- paste0(path_deps, "processed_obs_data/species/species_verb.csv")
+    write_csv(spec_d_verb_full, f_name)
+    return(f_name)
+}
+
+
+save_graph_verb <- function(path_deps, graph_verb) {
+    # Check if graph folder exists
+    if (!dir.exists(paste0(path_deps, "processed_obs_data/graph"))) {
+        dir.create(paste0(path_deps, "processed_obs_data/graph"))
+    }
+    # Save as csv
+    f_name <- paste0(path_deps, "processed_obs_data/graph/species_graph_verb.graphml")
+    write.graph(graph_verb, f_name, format = "graphml")
+    return(f_name)
 }

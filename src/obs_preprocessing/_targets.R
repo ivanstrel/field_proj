@@ -111,7 +111,25 @@ list(
     command = gen_graph(path_deps, spec_d_verb_full, cooccur_matrix_verb),
     format = "qs"
   ),
-  # .....
+
+  # Save tables and graph
+  tar_target(
+    name = species_acc_tab,
+    command = save_species_acc(path_deps, spec_d_acc_full),
+    format = "file"
+  ),
+  tar_target(
+    name = species_verb_tab,
+    command = save_species_verb(path_deps, spec_d_verb_full),
+    format = "file"
+  ),
+  # Save graph
+  tar_target(
+    name = graph_verb_graphml,
+    command = save_graph_verb(path_deps, graph_verb),
+    format = "file"
+  ),
+
   # =========================================================================== #
   # Coordinates processing                                                   ####
   # =========================================================================== #

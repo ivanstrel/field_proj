@@ -1,3 +1,6 @@
+# Project specific
+observations/raw/biomass/weight_photos/*
+
 # History files
 .Rhistory
 .Rapp.history
